@@ -10,7 +10,7 @@ const changeTheNum = (state = initialState, action) => {
 		case "INCREMENT":
 			return state + 1;
 		case "DECREMENT":
-			return state == 0 ? 0 : state - 1;
+			return state === 0 ? 0 : state - 1;
 		default:
 			return state;
 	}
