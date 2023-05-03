@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* background-color: #d2dbdd; */
+	/* font-family: "Josefin Sans", "Arial Narrow", Arial sans-serif; */
+	font-family: "Roboto", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Hooks challenge */
+
+.container {
+	width: 100%;
+	height: 100vh;
+	background: #2ed573;
+	text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.heading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+h1 {
+	margin: 2rem auto;
+	margin-bottom: 0;
+	color: white;
+	font-weight: 700;
+}
+h3 {
+	margin: 2rem auto;
+	margin-bottom: 4rem;
+	color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.main_div {
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.center_hooks_div {
+	width: 25%;
+	height: 60vh;
+	background: #f4f4f4;
+	box-shadow: 5px 5px 25px -5px rgba(0, 0, 0, 0.5);
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.number {
+	color: black;
+	background: transparent;
+	padding: 6px 0 2px 0;
+	margin-bottom: 10px;
+	text-shadow: 10px 5px 8.5px gray;
+	font-size: 80px;
+	font-weight: 100;
+	width: 100%;
+	margin-bottom: 50px;
+}
+
+.btn_div {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: row;
+}
+
+.buttons {
+	min-height: 40px;
+	width: 40px;
+	border-radius: 5%;
+	border-color: transparent;
+	font-size: 40px;
+	border: none;
+	outline: none;
+	margin-top: 30px;
+	color: black !important;
+	padding: 0 10px;
+	box-shadow: 2.5px 2.5px 8px 2px rgba(0, 0, 0, 0.3);
+}
+
+.btn_green:hover {
+	color: #2ed573 !important;
+}
+.btn_red:hover {
+	color: #ff4757 !important;
+}
+
+@media (max-width: 768px) {
+	.center_hooks_div {
+		width: 55%;
+	}
+	button {
+		margin-left: 5px;
+		min-height: 40px;
+		width: 40px;
+		color: #fff;
+		font-size: 30px;
+	}
 }
