@@ -8,9 +8,9 @@ const initialState = 0;
 const changeTheNum = (state = initialState, action) => {
 	switch (action.type) {
 		case "INCREMENT":
-			return state + 1;
+			return state + action.payload;
 		case "DECREMENT":
-			return state === 0 ? 0 : state - 1;
+			return state === 0 ? 0 : state - action.payload;
 		default:
 			return state;
 	}
