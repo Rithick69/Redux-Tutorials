@@ -4,6 +4,9 @@ import { addTodo, deleteTodo, removeTodo } from "../../actions";
 
 const Todo = () => {
 	const [inputData, setInputData] = useState("");
+	const list = useSelector((state) => {
+		state.todoReducer.list;
+	});
 	const dispatch = useDispatch();
 	return (
 		<>
@@ -27,9 +30,23 @@ const Todo = () => {
 					<i
 						className="fa fa-plus add-btn"
 						onClick={() => {
-							dispatch(addTodo(inputData));
+							dispatch(addTodo(inputData), setInputData(""));
 						}}
 					></i>
+				</div>
+				<div className="show-items">
+					{list.map((elem) => {
+						<div className="eachitems" key={elem.id}>
+							<h3>{elem.data}</h3>
+							<i
+								className="fa fa-trash-alt add-btn"
+								title="Delete Item"
+								onClick={() => {
+									dispatch(deleteTodo(elem.id), setInputData(""));
+								}}
+							></i>
+						</div>;
+					})}
 				</div>
 			</div>
 		</>

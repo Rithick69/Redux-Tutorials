@@ -8,8 +8,12 @@ import changeTheNum from "./counter";
 
 import { combineReducers } from "redux";
 
+// For todo app.
+import todoReducer from "./todo_reducer";
+
 const rootReducer = combineReducers({
 	changeTheNum,
+	todoReducer,
 	// Add other reducers here.
 });
 
