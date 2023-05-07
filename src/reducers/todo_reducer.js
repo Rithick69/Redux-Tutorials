@@ -19,6 +19,15 @@ const todoReducer = (state = initialData, action) => {
 					},
 				],
 			};
+		case "DELETE_ITEM":
+			const newList = state.list.filter((elem) => {
+				elem.id !== action.id;
+			});
+			return {
+				...state,
+				list: newList,
+			};
+
 		default:
 			return state;
 	}

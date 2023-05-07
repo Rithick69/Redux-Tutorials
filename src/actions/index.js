@@ -33,9 +33,10 @@ export const addTodo = (data) => {
 
 // Action for delete item.
 
-export const deleteTodo = () => {
+export const deleteTodo = (id) => {
 	return {
 		type: "DELETE_ITEM",
+		id,
 	};
 };
 
