@@ -27,6 +27,27 @@ const todoReducer = (state = initialData, action) => {
 				...state,
 				list: newList,
 			};
+		case "SELECT_ITEM":
+			const newItem = state.list.find((elem) => {
+				elem.id === action.id;
+			});
+			return newItem;
+		case "EDIT_ITEM":
+			const editItem = state.list.map((elem) => {
+				if (elem.id === action.id) {
+					return {
+						...state,
+						list: [
+							...state.list,
+							{
+								id: id,
+								data: action.payload,
+							},
+						],
+					};
+				}
+			});
+			return newItem;
 
 		default:
 			return state;
