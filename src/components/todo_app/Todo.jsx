@@ -1,6 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, deleteTodo, removeTodo } from "../../actions";
+import {
+	addTodo,
+	deleteTodo,
+	editTodo,
+	removeTodo,
+	selectTodo,
+} from "../../actions";
 
 const Todo = () => {
 	const [inputData, setInputData] = useState("");
@@ -45,6 +51,15 @@ const Todo = () => {
 										title="Delete Item"
 										onClick={() => {
 											dispatch(deleteTodo(elem.id));
+										}}
+									/>
+									<i
+										className="fa fa-write-alt add-btn"
+										title="Edit Item"
+										onClick={() => {
+											let editItem = dispatch(selectTodo(elem.id));
+											console.log(editItem);
+											setInputData(editItem);
 										}}
 									/>
 								</div>

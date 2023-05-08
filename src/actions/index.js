@@ -40,6 +40,20 @@ export const deleteTodo = (id) => {
 	};
 };
 
+export const selectTodo = (id) => {
+	return {
+		type: "SELECT_ITEM",
+		id,
+	};
+};
+
+export const editTodo = (id) => {
+	return {
+		type: "EDIT_ITEM",
+		id,
+	};
+};
+
 // Action for remove all items.
 
 export const removeTodo = () => {
