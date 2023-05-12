@@ -16,57 +16,71 @@ const Todo = () => {
 	const dispatch = useDispatch();
 	return (
 		<>
-			<div className="main-div">
-				<div className="child-div">
-					<figure>
-						<figcaption>Add Your List Here ✌️</figcaption>
-					</figure>
-				</div>
-
-				<div className="additems">
-					<input
-						type="text"
-						placeholder="✍️ Add Items .. "
-						value={inputData}
-						onChange={(event) => {
-							const { value } = event.target;
-							setInputData(value);
-						}}
-					/>
-					<i
-						className="fa fa-plus add-btn"
-						onClick={() => {
-							dispatch(addTodo(inputData), setInputData(""));
-						}}
-					/>
-				</div>
-				<div className="show-items">
+			<div className="container">
+				<header className="header">
+					<h1>ToDo App</h1>
+					<form id="task-form">
+						<input
+							type="text"
+							id="task-input"
+							placeholder="✍️ Add Items .. "
+							value={inputData}
+							onChange={(event) => {
+								const { value } = event.target;
+								setInputData(value);
+							}}
+						/>
+						``{" "}
+						<button
+							type="submit"
+							onClick={() => {
+								dispatch(addTodo(inputData), setInputData(""));
+							}}
+						>
+							Add
+						</button>
+					</form>
+				</header>
+				<ul className="task-list" id="task-list">
 					{list.map((elem) => {
 						return (
-							<div className="eachitems" key={elem.id}>
-								<h3>{elem.data}</h3>
-								<div className="todo-btn">
-									<i
-										className="fa fa-trash-alt add-btn"
-										title="Delete Item"
-										onClick={() => {
-											dispatch(deleteTodo(elem.id));
-										}}
-									/>
-									<i
-										className="fa fa-write-alt add-btn"
-										title="Edit Item"
-										onClick={() => {
-											let editItem = dispatch(selectTodo(elem.id));
-											console.log(editItem);
-											setInputData(editItem);
-										}}
-									/>
+							<li>
+								<div className="task">
+									<h3>{elem.data}</h3>
 								</div>
-							</div>
+								<div className="actions">
+									<div className="todo-btn">
+										<i
+											className="fa fa-trash-alt add-btn"
+											title="Delete Item"
+										/>
+										<i className="fa fa-write-alt add-btn" />
+									</div>
+									<button className="edit">
+										<i
+											className="fa fa-pencil"
+											title="Edit Item"
+											onClick={() => {
+												let editItem = dispatch(selectTodo(elem.id));
+												console.log(editItem);
+												setInputData(editItem);
+											}}
+										></i>
+									</button>
+									<button className="delete">
+										<i
+											className="fa fa-trash"
+											title="Delete Item"
+											onClick={() => {
+												dispatch(deleteTodo(elem.id));
+											}}
+										></i>
+									</button>
+								</div>
+							</li>
 						);
 					})}
-				</div>
+				</ul>
 			</div>
 		</>
 	);
