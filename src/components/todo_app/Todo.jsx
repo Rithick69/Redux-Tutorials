@@ -1,17 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-	addTodo,
-	deleteTodo,
-	editTodo,
-	removeTodo,
-	selectTodo,
-} from "../../actions";
+import { addTodo, deleteTodo } from "../../actions";
+import "./index.css";
 
 const Todo = () => {
 	const [inputData, setInputData] = useState("");
 	const list = useSelector((state) => {
-		state.todoReducer.list;
+		return state.todoReducer.list;
 	});
 	const dispatch = useDispatch();
 	return (
@@ -19,7 +14,7 @@ const Todo = () => {
 			<div className="container">
 				<header className="header">
 					<h1>ToDo App</h1>
-					<form id="task-form">
+					<div className="form" id="task-form">
 						<input
 							type="text"
 							id="task-input"
@@ -30,16 +25,15 @@ const Todo = () => {
 								setInputData(value);
 							}}
 						/>
-						``{" "}
 						<button
-							type="submit"
+							className="add"
 							onClick={() => {
 								dispatch(addTodo(inputData), setInputData(""));
 							}}
 						>
 							Add
 						</button>
-					</form>
+					</div>
 				</header>
 				<ul className="task-list" id="task-list">
 					{list.map((elem) => {
@@ -49,23 +43,22 @@ const Todo = () => {
 									<h3>{elem.data}</h3>
 								</div>
 								<div className="actions">
-									<div className="todo-btn">
+									{/* <div className="todo-btn">
 										<i
 											className="fa fa-trash-alt add-btn"
 											title="Delete Item"
 										/>
 										<i className="fa fa-write-alt add-btn" />
-									</div>
+									</div> */}
 									<button className="edit">
-										<i
-											className="fa fa-pencil"
-											title="Edit Item"
-											onClick={() => {
+										<i className="fa fa-pencil" title="Edit Item">
+											{/* onClick=
+											{() => {
 												let editItem = dispatch(selectTodo(elem.id));
 												console.log(editItem);
 												setInputData(editItem);
-											}}
-										></i>
+											}} */}
+										</i>
 									</button>
 									<button className="delete">
 										<i

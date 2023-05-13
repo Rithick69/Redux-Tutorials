@@ -21,31 +21,26 @@ const todoReducer = (state = initialData, action) => {
 			};
 		case "DELETE_ITEM":
 			const newList = state.list.filter((elem) => {
-				elem.id !== action.id;
+				return elem.id !== action.id;
 			});
 			return {
 				...state,
 				list: newList,
 			};
-		case "SELECT_ITEM":
-			const newItem = state.list.find((elem) => {
-				elem.id === action.id;
-			});
-			return newItem;
-		case "EDIT_ITEM":
-			const editedList = state.list.map((elem) => {
-				if (elem.id === action.id) {
-					return {
-						...elem,
-						data: action.payload,
-					};
-				}
-			});
+		// case "EDIT_ITEM":
+		// 	const editedList = state.list.map((elem) => {
+		// 		if (elem.id === action.id) {
+		// 			return {
+		// 				...elem,
+		// 				data: action.payload,
+		// 			};
+		// 		}
+		// 	});
 
-			return {
-				...state,
-				list: editedList,
-			};
+		// 	return {
+		// 		...state,
+		// 		list: editedList,
+		// 	};
 
 		default:
 			return state;
