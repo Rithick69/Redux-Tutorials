@@ -9,6 +9,19 @@ const Todo = () => {
 		return state.todoReducer.list;
 	});
 	const dispatch = useDispatch();
+
+	const editItem = (id) => {
+		let newEditItem = list.find((elem) => {
+			return elem.id === id;
+		});
+		console.log(newEditItem);
+
+		//getLocalItems(newEditItem);
+		// setToggleIcon(false);
+		setInputData(newEditItem.data);
+		// setEditItemId(id);
+	};
+
 	return (
 		<>
 			<div className="container">
@@ -51,7 +64,13 @@ const Todo = () => {
 										<i className="fa fa-write-alt add-btn" />
 									</div> */}
 									<button className="edit">
-										<i className="fa fa-pencil" title="Edit Item">
+										<i
+											className="fa fa-pencil"
+											title="Edit Item"
+											onClick={() => {
+												editItem(elem.id);
+											}}
+										>
 											{/* onClick=
 											{() => {
 												let editItem = dispatch(selectTodo(elem.id));
