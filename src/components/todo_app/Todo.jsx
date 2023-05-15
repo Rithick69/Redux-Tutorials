@@ -5,10 +5,37 @@ import "./index.css";
 
 const Todo = () => {
 	const [inputData, setInputData] = useState("");
+	const [toggleIcon, setToggleIcon] = useState(true);
+	const [editItemId, setEditItemId] = useState(null);
+
 	const list = useSelector((state) => {
 		return state.todoReducer.list;
 	});
 	const dispatch = useDispatch();
+
+	const listOfItems = () => {
+		if (!inputData) {
+			alert("Please enter data");
+		} else if (!toggleIcon && inputData) {
+			console.log("hi", editItemId);
+			// setItems(
+			// 	Items.map((elem) => {
+			// 		if (elem.id === editItemId) {
+			// 			return { ...elem, name: inputList };
+			// 		}
+			// 		return elem;
+			// 	})
+			// );
+			setToggleIcon(true);
+			setInputData("");
+			setEditItemId(null);
+		} else {
+			dispatch(addTodo(inputData));
+			// Clearing the input field after add the item to the array.
+			setInputData("");
+			setToggleIcon(true);
+		}
+	};
 
 	const editItem = (id) => {
 		let newEditItem = list.find((elem) => {
@@ -17,9 +44,9 @@ const Todo = () => {
 		console.log(newEditItem);
 
 		//getLocalItems(newEditItem);
-		// setToggleIcon(false);
+		setToggleIcon(false);
 		setInputData(newEditItem.data);
-		// setEditItemId(id);
+		setEditItemId(id);
 	};
 
 	return (
@@ -38,13 +65,8 @@ const Todo = () => {
 								setInputData(value);
 							}}
 						/>
-						<button
-							className="add"
-							onClick={() => {
-								dispatch(addTodo(inputData), setInputData(""));
-							}}
-						>
-							Add
+						<button className="add" onClick={listOfItems}>
+							{toggleIcon ? "Add" : "Edit"}
 						</button>
 					</div>
 				</header>
@@ -70,14 +92,7 @@ const Todo = () => {
 											onClick={() => {
 												editItem(elem.id);
 											}}
-										>
-											{/* onClick=
-											{() => {
-												let editItem = dispatch(selectTodo(elem.id));
-												console.log(editItem);
-												setInputData(editItem);
-											}} */}
-										</i>
+										></i>
 									</button>
 									<button className="delete">
 										<i
