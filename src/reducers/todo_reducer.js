@@ -8,7 +8,6 @@ const todoReducer = (state = initialData, action) => {
 			const { id, data } = action.payload;
 
 			return {
-				...state,
 				list: [
 					// Previously added items in the list array.
 					...state.list,
@@ -24,23 +23,22 @@ const todoReducer = (state = initialData, action) => {
 				return elem.id !== action.id;
 			});
 			return {
-				...state,
 				list: newList,
 			};
-		// case "EDIT_ITEM":
-		// 	const editedList = state.list.map((elem) => {
-		// 		if (elem.id === action.id) {
-		// 			return {
-		// 				...elem,
-		// 				data: action.payload,
-		// 			};
-		// 		}
-		// 	});
+		case "EDIT_ITEM":
+			const editedList = state.list.map((elem) => {
+				if (elem.id === action.id) {
+					return {
+						...elem,
+						data: action.data,
+					};
+				}
+				return elem;
+			});
 
-		// 	return {
-		// 		...state,
-		// 		list: editedList,
-		// 	};
+			return {
+				list: editedList,
+			};
 
 		default:
 			return state;

@@ -40,17 +40,11 @@ export const deleteTodo = (id) => {
 	};
 };
 
-export const selectTodo = (id) => {
-	return {
-		type: "SELECT_ITEM",
-		id,
-	};
-};
-
-export const editTodo = (id) => {
+export const editTodo = (id, data) => {
 	return {
 		type: "EDIT_ITEM",
 		id,
+		data,
 	};
 };
 
