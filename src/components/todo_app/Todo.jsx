@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, deleteTodo } from "../../actions";
+import { addTodo, deleteTodo, editTodo } from "../../actions";
 import "./index.css";
 
 const Todo = () => {
@@ -17,15 +17,7 @@ const Todo = () => {
 		if (!inputData) {
 			alert("Please enter data");
 		} else if (!toggleIcon && inputData) {
-			console.log("hi", editItemId);
-			// setItems(
-			// 	Items.map((elem) => {
-			// 		if (elem.id === editItemId) {
-			// 			return { ...elem, name: inputList };
-			// 		}
-			// 		return elem;
-			// 	})
-			// );
+			dispatch(editTodo(editItemId, inputData));
 			setToggleIcon(true);
 			setInputData("");
 			setEditItemId(null);
