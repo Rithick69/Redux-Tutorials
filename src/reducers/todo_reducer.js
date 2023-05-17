@@ -39,6 +39,10 @@ const todoReducer = (state = initialData, action) => {
 			return {
 				list: editedList,
 			};
+		case "REMOVE_ITEMS":
+			return {
+				list: [],
+			};
 
 		default:
 			return state;
