@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, deleteTodo, editTodo } from "../../actions";
+import { addTodo, deleteTodo, editTodo, removeTodo } from "../../actions";
 import "./index.css";
 
 const Todo = () => {
 	const [inputData, setInputData] = useState("");
 	const [toggleIcon, setToggleIcon] = useState(true);
 	const [editItemId, setEditItemId] = useState(null);
+	const [line, setLine] = useState(false);
+
+	// Line through style
+	const completed = () => {
+		setLine(true);
+	};
 
 	const list = useSelector((state) => {
 		return state.todoReducer.list;
@@ -33,8 +39,6 @@ const Todo = () => {
 		let newEditItem = list.find((elem) => {
 			return elem.id === id;
 		});
-		console.log(newEditItem);
-
 		//getLocalItems(newEditItem);
 		setToggleIcon(false);
 		setInputData(newEditItem.data);
@@ -65,18 +69,18 @@ const Todo = () => {
 				<ul className="task-list" id="task-list">
 					{list.map((elem) => {
 						return (
-							<li>
+							<li style={{ textDecoration: line ? "line-through" : "none" }}>
+								<input
+									type="radio"
+									id={elem.id}
+									onClick={() => {
+										completed(elem.id);
+									}}
+								/>
 								<div className="task">
 									<h3>{elem.data}</h3>
 								</div>
 								<div className="actions">
-									{/* <div className="todo-btn">
-										<i
-											className="fa fa-trash-alt add-btn"
-											title="Delete Item"
-										/>
-										<i className="fa fa-write-alt add-btn" />
-									</div> */}
 									<button className="edit">
 										<i
 											className="fa fa-pencil"
@@ -100,6 +104,17 @@ const Todo = () => {
 						);
 					})}
 				</ul>
+
+				<div className="remove">
+					<button
+						className="remove_btn"
+						onClick={() => {
+							dispatch(removeTodo());
+						}}
+					>
+						Remove All
+					</button>
+				</div>
 			</div>
 		</>
 	);

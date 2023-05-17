@@ -77,7 +77,7 @@ input[type="text"] {
 	flex: 1;
 }
 
-input[type="checkbox"] {
+input[type="radio"] {
 	margin-right: 10px;
 	cursor: pointer;
 }
@@ -102,6 +102,22 @@ span {
 
 .actions button i:hover {
 	color: #f44336;
+}
+
+.remove {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.remove_btn {
+	padding: 10px 20px;
+	font-size: 18px;
+	border: none;
+	background-color: #333;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 @media only screen and (max-width: 768px) {
