@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTodo, deleteTodo, editTodo, removeTodo } from "../../actions";
+import {
+	addTodo,
+	checkedTodo,
+	deleteTodo,
+	editTodo,
+	removeTodo,
+} from "../../actions";
 import "./index.css";
 
 const Todo = () => {
 	const [inputData, setInputData] = useState("");
 	const [toggleIcon, setToggleIcon] = useState(true);
 	const [editItemId, setEditItemId] = useState(null);
-	const [line, setLine] = useState(false);
-
-	// Line through style
-	const completed = () => {
-		setLine(true);
-	};
 
 	const list = useSelector((state) => {
 		return state.todoReducer.list;
@@ -69,19 +69,23 @@ const Todo = () => {
 				<ul className="task-list" id="task-list">
 					{list.map((elem) => {
 						return (
-							<li style={{ textDecoration: line ? "line-through" : "none" }}>
+							<li
+								style={{
+									textDecoration: elem.status ? "line-through" : "none",
+								}}
+							>
 								<input
 									type="radio"
 									id={elem.id}
 									onClick={() => {
-										completed(elem.id);
+										dispatch(checkedTodo(elem.id, true));
 									}}
 								/>
 								<div className="task">
 									<h3>{elem.data}</h3>
 								</div>
 								<div className="actions">
-									<button className="edit">
+									<button className="edit" type="button" disabled={elem.status}>
 										<i
 											className="fa fa-pencil"
 											title="Edit Item"
@@ -110,6 +114,8 @@ const Todo = () => {
 						className="remove_btn"
 						onClick={() => {
 							dispatch(removeTodo());
+							setInputData("");
+							setToggleIcon(true);
 						}}
 					>
 						Remove All
