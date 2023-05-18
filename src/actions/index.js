@@ -27,6 +27,7 @@ export const addTodo = (data) => {
 		payload: {
 			id: new Date().getTime().toString(),
 			data: data,
+			status: false,
 		},
 	};
 };
@@ -53,5 +54,15 @@ export const editTodo = (id, data) => {
 export const removeTodo = () => {
 	return {
 		type: "REMOVE_ITEMS",
+	};
+};
+
+// Action for checked items.
+
+export const checkedTodo = (id, status) => {
+	return {
+		type: "CHECKED_ITEM",
+		id,
+		status,
 	};
 };

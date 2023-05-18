@@ -5,7 +5,7 @@ const initialData = {
 const todoReducer = (state = initialData, action) => {
 	switch (action.type) {
 		case "ADD_ITEM":
-			const { id, data } = action.payload;
+			const { id, data, status } = action.payload;
 
 			return {
 				list: [
@@ -15,6 +15,7 @@ const todoReducer = (state = initialData, action) => {
 					{
 						id: id,
 						data: data,
+						status: status,
 					},
 				],
 			};
@@ -38,6 +39,20 @@ const todoReducer = (state = initialData, action) => {
 
 			return {
 				list: editedList,
+			};
+		case "CHECKED_ITEM":
+			const updatedList = state.list.map((elem) => {
+				if (elem.id === action.id) {
+					return {
+						...elem,
+						status: action.status,
+					};
+				}
+				return elem;
+			});
+
+			return {
+				list: updatedList,
 			};
 		case "REMOVE_ITEMS":
 			return {
