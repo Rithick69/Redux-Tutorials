@@ -104,6 +104,14 @@ span {
 	color: #f44336;
 }
 
+.disable_btn {
+	filter: blur(1px);
+}
+
+.disable_btn i:hover {
+	color: #333 !important;
+}
+
 .remove {
 	display: flex;
 	justify-content: center;
