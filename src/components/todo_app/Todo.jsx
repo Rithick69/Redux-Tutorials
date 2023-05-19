@@ -77,22 +77,25 @@ const Todo = () => {
 								<input
 									type="radio"
 									id={elem.id}
+									checked={elem.status}
+									readOnly={true}
 									onClick={() => {
-										dispatch(checkedTodo(elem.id, true));
+										dispatch(checkedTodo(elem.id, !elem.status));
 									}}
 								/>
 								<div className="task">
 									<h3>{elem.data}</h3>
 								</div>
 								<div className="actions">
-									<button className="edit" type="button" disabled={elem.status}>
-										<i
-											className="fa fa-pencil"
-											title="Edit Item"
-											onClick={() => {
-												editItem(elem.id);
-											}}
-										></i>
+									<button
+										className={elem.status ? "disable_btn" : "edit"}
+										type="button"
+										onClick={() => {
+											editItem(elem.id);
+										}}
+										disabled={elem.status}
+									>
+										<i className="fa fa-pencil" title="Edit Item" />
 									</button>
 									<button className="delete">
 										<i
