@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
 	addTodo,
@@ -11,15 +11,15 @@ import "./index.css";
 
 // to get the data from Local Storage
 
-const getLocalItems = () => {
-	let list = localStorage.getItem("lists");
+// const getLocalItems = () => {
+// 	let list = localStorage.getItem("lists");
 
-	if (list) {
-		return JSON.parse(localStorage.getItem("lists"));
-	} else {
-		return [];
-	}
-};
+// 	if (list) {
+// 		return JSON.parse(localStorage.getItem("lists"));
+// 	} else {
+// 		return [];
+// 	}
+// };
 
 const Todo = () => {
 	const [inputData, setInputData] = useState("");
@@ -27,9 +27,9 @@ const Todo = () => {
 	const [editItemId, setEditItemId] = useState(null);
 
 	const list = useSelector((state) => {
-		if (state.todoReducer.list.length === 0) {
-			return getLocalItems()
-		}
+		// if (state.todoReducer.list.length === 0) {
+		// 	return getLocalItems()
+		// }
 		return state.todoReducer.list;
 	});
 	const dispatch = useDispatch();
@@ -60,9 +60,9 @@ const Todo = () => {
 		setEditItemId(id);
 	};
 
-	useEffect(() => {
-		localStorage.setItem("lists", JSON.stringify(list));
-	}, [list]);
+	// useEffect(() => {
+	// 	localStorage.setItem("lists", JSON.stringify(list));
+	// }, [list]);
 
 	return (
 		<>
@@ -88,8 +88,7 @@ const Todo = () => {
 				<ul className="task-list" id="task-list">
 					{list.map((elem, index) => {
 						return (
-							<li
-							    key={index}
+							<li key={index}
 								style={{
 									textDecoration: elem.status ? "line-through" : "none",
 								}}
