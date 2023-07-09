@@ -1,10 +1,10 @@
 import React from "react";
-import Todo from "./components/todo_app/Todo";
+import WebApp from "./components/movie_website/WebApp";
 
 const App = () => {
 	return (
 		<>
-			<Todo />
+			<WebApp />
 		</>
 	);
 };
