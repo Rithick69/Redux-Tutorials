@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './Home';
 import Movie from './Movie';
 import Error from './Error';
+import './index.css'
 
 import { Routes, Route  } from 'react-router-dom';
 
