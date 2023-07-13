@@ -4,7 +4,9 @@ import React, { useContext, useEffect, useState } from "react";
 // Provider (delivery agent)
 // Consumer / useContext hook (you the consumer)
 
-const API_URL = `http://www.omdbapi.com/?apikey=9a9d3c66&s=titanic`
+const API_KEY = process.env.REACT_APP_API_KEY;
+
+const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`
 // Creating a context
 
 const AppContext = React.createContext();
@@ -15,6 +17,7 @@ const AppProvider = ({ children }) => {
     const [isLoading, setLoading] = useState(true);
     const [movie, setMovie] = useState([]);
     const [isError, setError] = useState({show: 'false', msg: ''});
+    const [query, setQuery] = useState('Titanic');
 
     const getMovies = async (url) => {
         try{
@@ -35,11 +38,13 @@ const AppProvider = ({ children }) => {
         }
     };
     useEffect(() => {
-        getMovies(API_URL);
-    }, []);
+        if(query){
+            getMovies(`${API_URL}&s=${query}`);
+        }
+    }, [query]);
 
     return <AppContext.Provider
-    value={{isLoading, isError, movie}}
+    value={{isLoading, isError, movie, query, setQuery}}
     >{children}</AppContext.Provider>;
 };
 

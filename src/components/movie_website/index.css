@@ -72,6 +72,12 @@ img {
     margin: auto;
     text-align: center;
     margin: 4rem 0;
+    margin-bottom: 0;
+}
+
+.search-box,.close-icon,.search-section {
+	position: relative;
+	padding: 10px;
 }
 
 input {
@@ -84,6 +90,45 @@ input {
         rgba(0, 0, 0, 0.6) 0px 1px 2px 0px;
     outline: none;
     margin-top: 2rem;
+}
+
+.close-icon {
+	border:1px solid transparent;
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: middle;
+    outline: 0;
+    cursor: pointer;
+}
+.close-icon:after {
+	content: "X";
+	display: block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	background-color: #FA9595;
+	z-index:1;
+	right: 35px;
+	top: -5px;
+	bottom: 0;
+	margin: auto;
+	padding: 2px;
+	border-radius: 50%;
+	text-align: center;
+	color: white;
+	font-weight: normal;
+	font-size: 12px;
+	box-shadow: 0 0 2px #E50F0F;
+	cursor: pointer;
+    line-height: 15px;
+}
+.search-box:not(:valid) ~ .close-icon {
+	display: none;
+}
+
+.search-res {
+    margin-top: 5rem;
+    margin-bottom: 0;
 }
 
 .card-error p {
@@ -164,7 +209,7 @@ a {
     display: flex;
     justify-content: center;
     margin-top: 2rem;
-    padding: 3.2rem 1 rem;
+    padding: 3.2rem 1rem;
     color: var(--bg-clr);
     border: 0.2rem solid var(--text-clr);
     font-size: 1.8rem;
@@ -179,7 +224,7 @@ a:hover {
 
 a:hover h2 {
     color: var(--bg-clr);
-    transform: translateY(-1.5rem);
+    transform: translateY(-0.5rem);
     display: inline-block;
 }
 
