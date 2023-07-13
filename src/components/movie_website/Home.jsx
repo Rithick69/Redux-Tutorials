@@ -11,7 +11,6 @@ const Home = () => {
 
   return (
     <>
-      <div>My Home page</div>
       <Search />
       <Movies />
     </>
