@@ -1,18 +1,20 @@
 import React from 'react';
 // import { AppContext } from './context';
 
-// import { useGlobalContext } from './context';
+import { useGlobalContext } from './context';
 import Movies from './Movies';
 import Search from './Search';
 
 const Home = () => {
   // const name = useContext(AppContext)
-  // const name = useGlobalContext();
+  const { isError } = useGlobalContext();
 
   return (
     <>
       <Search />
-      <Movies />
+      {
+        !isError.show ? <Movies /> : <div></div>
+      }
     </>
   )
 }

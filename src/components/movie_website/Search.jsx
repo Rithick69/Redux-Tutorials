@@ -15,8 +15,12 @@ const Search = () => {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
-            <button class="close-icon" type="reset" onClick={(e) => setQuery('')}></button>
-            <h2 className='search-res'>Search results for: {query}</h2>
+            <button className="close-icon" type="reset" onClick={(e) => setQuery('')}></button>
+            {
+              query ?
+                  <h2 className='search-res'>Search results for: {query}</h2>
+                  : ""
+            }
           </div>
         </form>
         <div className='card-error'>

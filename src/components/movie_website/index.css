@@ -210,7 +210,7 @@ a {
     justify-content: center;
     margin-top: 2rem;
     padding: 3.2rem 1rem;
-    color: var(--bg-clr);
+    color: var(--text-clr);
     border: 0.2rem solid var(--text-clr);
     font-size: 1.8rem;
     border-radius: 0.5rem;

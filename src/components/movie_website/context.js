@@ -6,7 +6,7 @@ import React, { useContext, useEffect, useState } from "react";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`
+export const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`
 // Creating a context
 
 const AppContext = React.createContext();
@@ -14,23 +14,26 @@ const AppContext = React.createContext();
 // we need to create a provider.
 
 const AppProvider = ({ children }) => {
-    const [isLoading, setLoading] = useState(true);
+    const [isLoading, setLoading] = useState(false);
     const [movie, setMovie] = useState([]);
     const [isError, setError] = useState({show: 'false', msg: ''});
-    const [query, setQuery] = useState('Titanic');
+    const [query, setQuery] = useState('');
 
     const getMovies = async (url) => {
         try{
             const res = await fetch(url);
             const data = await res.json();
-            console.log(data)
             if(data.Response === 'True') {
                 setLoading(false);
                 setMovie(data.Search);
+                setError({
+                    show: false,
+                    msg: ''
+                })
             } else {
                 setError({
-                    show: 'true',
-                    msg: data.error
+                    show: true,
+                    msg: data.Error
                 })
             }
         } catch (error) {
@@ -38,8 +41,23 @@ const AppProvider = ({ children }) => {
         }
     };
     useEffect(() => {
-        if(query){
-            getMovies(`${API_URL}&s=${query}`);
+        if (query) {
+            setLoading(true);
+            const timeOut = setTimeout(() => {
+                getMovies(`${API_URL}&s=${query}`);
+            }, 800);
+
+            // UseEffect only returns one clean up method which will clear
+            // anything written in the search field before debounce time has passed.
+
+            return () => clearTimeout(timeOut);
+        } else {
+            setLoading(false)
+            setError({
+                show: false,
+                msg: ''
+            })
+            setMovie([])
         }
     }, [query]);
 
