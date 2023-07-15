@@ -1,13 +1,23 @@
-import React from 'react';
-// import { AppContext } from './context';
-
-import { useGlobalContext } from './context';
+import React, { useEffect } from 'react';
 import Movies from './Movies';
 import Search from './Search';
 
+import { useSelector } from 'react-redux';
+import { GetMovies, API_URL } from './api';
+
 const Home = () => {
-  // const name = useContext(AppContext)
-  const { isError } = useGlobalContext();
+  const { query, isError } = useSelector((state) => {
+		return state.movieDbReducer;
+	});
+
+  useEffect(() => {
+    if (query) {
+        const timeOut = setTimeout(() => {
+            GetMovies(`${API_URL}&s=${query}`);
+        }, 800);
+        return () => clearTimeout(timeOut);
+    }
+}, [query]);
 
   return (
     <>

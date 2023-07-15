@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from 'react-router'
-import { API_URL } from './context';
+import { API_URL } from './api';
 import './index.css';
 import { NavLink } from 'react-router-dom';
 
