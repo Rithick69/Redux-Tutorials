@@ -66,3 +66,41 @@ export const checkedTodo = (id, status) => {
 		status,
 	};
 };
+
+// # For MovieDb App <-------------------------------
+
+export const searchQuery = (data) => {
+	return {
+		type: "QUERY",
+		payload: {
+			query: data,
+		},
+	};
+};
+
+export const setLoading = (data) => {
+	return {
+		type: "SET_LOADING",
+		payload: {
+			status: data,
+		},
+	};
+};
+
+export const setError = (data) => {
+	return {
+		type: "SET_ERROR",
+		payload: {
+			error: data,
+		},
+	};
+};
+
+export const setMovies = (data) => {
+	return {
+		type: "SET_MOVIES",
+		payload: {
+			data: data,
+		},
+	};
+};

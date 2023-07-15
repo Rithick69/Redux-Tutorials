@@ -11,9 +11,14 @@ import { combineReducers } from "redux";
 // For todo app.
 import todoReducer from "./todo_reducer";
 
+// For MovieDb app.
+
+import movieDbReducer from "./movieDb_reducer";
+
 const rootReducer = combineReducers({
 	changeTheNum,
 	todoReducer,
+	movieDbReducer,
 	// Add other reducers here.
 });
 
