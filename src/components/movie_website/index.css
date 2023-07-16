@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500&family=Lora:wght@400;500&family=Poppins:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;500&family=Lora:wght@400;500&family=Poppins:wght@400;600&display=swap");
+
 
 * {
     margin: 0;
@@ -24,6 +25,7 @@ body {
 h2 {
     font-family: "Lora", serif;
     color: var(--text-clr);
+    font-size: 2rem;
     transition: all 0.5s linear;
 }
 
@@ -39,8 +41,7 @@ img {
     transition: all 0.3s linear;
 }
 
-/* reusable css */
-
+/* resuable code  */
 .container {
     max-width: 140rem;
     margin: auto;
@@ -59,7 +60,7 @@ img {
 .card {
     width: 25rem;
     max-width: 30rem;
-    max-height: 30rem;
+    min-height: 30rem;
     border-radius: 1rem;
     display: flex;
     justify-content: center;
@@ -137,7 +138,7 @@ input {
     font-size: 1.8rem;
 }
 
-/* Single Movie page css code */
+/* Single Movie css code  */
 
 .movie-section {
     width: 100%;
@@ -174,7 +175,6 @@ figure {
     margin: 0;
     padding: 0;
 }
-
 .movie-card img {
     width: 100%;
     height: 100%;
@@ -224,7 +224,7 @@ a:hover {
 
 a:hover h2 {
     color: var(--bg-clr);
-    transform: translateY(-0.5rem);
+    transform: translateY(-1.5rem);
     display: inline-block;
 }
 
@@ -236,26 +236,22 @@ a:hover img {
     padding: 1.2rem 3.6rem;
 }
 
-/* responsive code */
-
+/* responsive code   */
 @media (max-width: 1200px) {
     .container {
         margin: auto;
         max-width: 110rem;
     }
-
     .grid-4-col {
         grid-template-columns: 1fr 1fr 1fr;
     }
 }
 
-@media (max-width: 998px){
-
+@media (max-width: 998px) {
     .container {
         max-width: 90rem;
         margin: auto;
     }
-
     .grid-4-col {
         grid-template-columns: 1fr 1fr;
     }

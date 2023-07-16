@@ -78,7 +78,7 @@ export const searchQuery = (data) => {
 	};
 };
 
-export const setLoading = (data) => {
+export const loadingStatus = (data) => {
 	return {
 		type: "SET_LOADING",
 		payload: {
@@ -87,7 +87,7 @@ export const setLoading = (data) => {
 	};
 };
 
-export const setError = (data) => {
+export const errorMsg = (data) => {
 	return {
 		type: "SET_ERROR",
 		payload: {
@@ -96,7 +96,7 @@ export const setError = (data) => {
 	};
 };
 
-export const setMovies = (data) => {
+export const fetchData = (data) => {
 	return {
 		type: "SET_MOVIES",
 		payload: {
