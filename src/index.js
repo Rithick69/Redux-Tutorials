@@ -10,9 +10,9 @@ import { PersistGate } from "redux-persist/integration/react";
 
 // import { AppProvider } from "./components/movie_website/context";
 
-store.subscribe(() => {
-	console.log(store.getState());
-});
+// store.subscribe(() => {
+// 	console.log(store.getState());
+// });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
