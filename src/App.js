@@ -1,10 +1,10 @@
 import React from "react";
-import WebApp from "./components/movie_website/WebApp";
+import AppP from "./components/portfolio_website/AppP";
 
 const App = () => {
 	return (
 		<>
-			<WebApp />
+			<AppP />
 		</>
 	);
 };
