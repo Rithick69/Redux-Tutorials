@@ -21,48 +21,43 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
-  const getMovies = async (url) => {
-    dispatch(loadingStatus(true));
-    try{
-        const res = await fetch(url);
-        const data = await res.json();
-        if(data.Response === 'True') {
-            dispatch(loadingStatus(false));
-            dispatch(fetchData(data.Search));
-            dispatch(errorMsg({
-                show: false,
-                msg: ''
-            }));
-        } else {
-            dispatch(errorMsg({
-                show: true,
-                msg: data.Error
-            }));
-        }
-    } catch (error) {
-        console.log(error);
-    }
-  };
-
-  const toggleStates = () => {
-    dispatch(loadingStatus(false));
-    dispatch(errorMsg({
-      show: false,
-      msg:""
-    }));
-    dispatch(fetchData([]));
-  }
-
   useEffect(() => {
     if (query) {
         const timeOut = setTimeout(() => {
-            getMovies(`${API_URL}&s=${query}`);
+          const getMovies = async (url) => {
+            dispatch(loadingStatus(true));
+            try{
+                const res = await fetch(url);
+                const data = await res.json();
+                if(data.Response === 'True') {
+                    dispatch(loadingStatus(false));
+                    dispatch(fetchData(data.Search));
+                    dispatch(errorMsg({
+                        show: false,
+                        msg: ''
+                    }));
+                } else {
+                    dispatch(errorMsg({
+                        show: true,
+                        msg: data.Error
+                    }));
+                }
+            } catch (error) {
+                console.log(error);
+            }
+          };
+          getMovies(`${API_URL}&s=${query}`);
         }, 800);
         return () => clearTimeout(timeOut);
     } else {
-      toggleStates();
+      dispatch(loadingStatus(false));
+      dispatch(errorMsg({
+        show: false,
+        msg:""
+      }));
+      dispatch(fetchData([]));
     }
-  }, [query]);
+  }, [query, dispatch]);
 
   return (
     <>
