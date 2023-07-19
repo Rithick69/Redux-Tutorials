@@ -7,6 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import Header from './reusables/Header';
 import Footer from './reusables/Footer';
 import { ThemeProvider } from 'styled-components';
+import { GlobalStyle } from './GlobalStyle';
 
 const AppP = () => {
 	const theme = {
@@ -33,6 +34,7 @@ const AppP = () => {
 		<>
 			{/* Provide css property to all components from parent */}
 			<ThemeProvider theme={theme}>
+				<GlobalStyle />
 				<Header />
 				<Routes>
 					<Route path="/" element={<Home />} />
