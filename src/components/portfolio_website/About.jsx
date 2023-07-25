@@ -1,9 +1,16 @@
-import React from 'react'
+import React from 'react';
+import HeroSection from './reusables/HeroSection';
 
 const About = () => {
-    return (
-        <div>About</div>
-    )
-}
+	const data = {
+		name: 'About page',
+		image: '',
+	};
+	return (
+		<>
+			<HeroSection {...data} />
+		</>
+	);
+};
 
-export default About
+export default About;
