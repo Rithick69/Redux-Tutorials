@@ -2,8 +2,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { Button } from '../styles/Button';
+import { useSelector } from 'react-redux';
 
-const HeroSection = (props) => {
+const HeroSection = () => {
+	const { name } = useSelector((state) => {
+		return state.portFolioReducer;
+	});
 	const Wrapper = styled.section`
 		padding: 9rem 0;
 
@@ -61,7 +65,7 @@ const HeroSection = (props) => {
 			<div className="container grid grid-two-column">
 				<div className="section-hero-data">
 					<p className="hero-top-data">THIS IS ME</p>
-					<h1 className="hero-heading">{props.name}</h1>
+					<h1 className="hero-heading">{name}</h1>
 					<p className="hero-para">
 						I'm Rithick Chowdhury. A Full Stack Developer.
 					</p>
