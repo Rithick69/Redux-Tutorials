@@ -126,3 +126,10 @@ export const aboutHero = (data) => {
 		},
 	};
 };
+
+export const getServices = (data) => {
+	return {
+		type: 'GET_SERVICES',
+		payload: data,
+	};
+};

@@ -1,6 +1,7 @@
 const initialData = {
 	name: '',
 	image: '',
+	servicesData: [],
 };
 
 const portFolioReducer = (state = initialData, action) => {
@@ -16,6 +17,11 @@ const portFolioReducer = (state = initialData, action) => {
 				...state,
 				name: action.payload.name,
 				image: action.payload.image,
+			};
+		case 'GET_SERVICES':
+			return {
+				...state,
+				servicesData: action.payload,
 			};
 		default:
 			return state;
