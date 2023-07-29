@@ -4,6 +4,7 @@ import { getServices } from '../../actions';
 import { styled } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Button } from './styles/Button';
+import Sdata from './reusables/SData';
 
 const Services = () => {
 	const { servicesData } = useSelector((state) => {
@@ -15,42 +16,17 @@ const Services = () => {
 	const API = 'https://thapareactapi.up.railway.app';
 
 	useEffect(() => {
-		const getServicesData = async (url) => {
+		const getServicesData = async (url, mock) => {
 			try {
-				const res = await fetch(url);
-				const data = await res.json();
+				const res = mock ? {} : await fetch(url);
+				const data = mock ? Sdata : await res.json();
 				dispatch(getServices(data));
 			} catch (error) {
 				console.log(error);
 			}
 		};
-		getServicesData(API);
+		getServicesData(API, true);
 	}, [dispatch]);
-
-	return (
-		<Wrapper className="section">
-			<h2 className="common-heading">Our Services</h2>
-			<div className="container grid grid-three-column">
-				{servicesData.map((curr) => {
-					const { id, name, image, description } = curr;
-					return (
-						<div className="card" key={id}>
-							<figure>
-								<img src="#" alt={name} />
-							</figure>
-							<div className="card-data">
-								<h3>{name}</h3>
-								<p>{description}</p>
-								<NavLink to="/service">
-									<Button>Read More</Button>
-								</NavLink>
-							</div>
-						</div>
-					);
-				})}
-			</div>
-		</Wrapper>
-	);
 
 	const Wrapper = styled.section`
 		padding: 9rem 0;
@@ -134,6 +110,31 @@ const Services = () => {
 			}
 		}
 	`;
+
+	return (
+		<Wrapper className="section">
+			<h2 className="common-heading">Our Services</h2>
+			<div className="container grid grid-three-column">
+				{servicesData.map((curr) => {
+					const { id, title, image, description } = curr;
+					return (
+						<div className="card" key={id}>
+							<figure>
+								<img src={image} alt={title} />
+							</figure>
+							<div className="card-data">
+								<h3>{title}</h3>
+								<p>{description}</p>
+								<NavLink to="/service">
+									<Button>Read More</Button>
+								</NavLink>
+							</div>
+						</div>
+					);
+				})}
+			</div>
+		</Wrapper>
+	);
 };
 
 export default Services;
