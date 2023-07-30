@@ -125,7 +125,7 @@ const Services = () => {
 							<div className="card-data">
 								<h3>{title}</h3>
 								<p>{description}</p>
-								<NavLink to="/service">
+								<NavLink to="/services">
 									<Button>Read More</Button>
 								</NavLink>
 							</div>

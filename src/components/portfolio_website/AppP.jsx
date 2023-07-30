@@ -8,6 +8,7 @@ import Header from './reusables/Header';
 import Footer from './reusables/Footer';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './GlobalStyle';
+import Error from './Error';
 
 const AppP = () => {
 	const theme = {
@@ -41,6 +42,7 @@ const AppP = () => {
 					<Route path="/about" element={<About />} />
 					<Route path="/services" element={<Services />} />
 					<Route path="/contact" element={<Contact />} />
+					<Route path="*" element={<Error />} />
 				</Routes>
 				<Footer />
 			</ThemeProvider>
