@@ -13,6 +13,22 @@ html {
     overflow-x: hidden;
 }
 
+::-webkit-scrollbar {
+    background-color: rgb(24 24 29);
+}
+
+::-webkit-scrollbar-track {
+    width: 1.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #fff;
+    border: 5px solid transparent;
+    border-radius: 9px;
+    background-clip: content-box;
+}
+
+
 h1 {
     font-size:6rem;
     font-weight: 900;
