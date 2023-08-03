@@ -9,6 +9,7 @@ import Footer from './reusables/Footer';
 import { ThemeProvider } from 'styled-components';
 import { GlobalStyle } from './GlobalStyle';
 import Error from './Error';
+import GoToTop from './reusables/GoToTop';
 
 const AppP = () => {
 	const theme = {
@@ -36,6 +37,7 @@ const AppP = () => {
 			{/* Provide css property to all components from parent */}
 			<ThemeProvider theme={theme}>
 				<GlobalStyle />
+				<GoToTop />
 				<Header />
 				<Routes>
 					<Route path="/" element={<Home />} />
