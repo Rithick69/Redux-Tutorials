@@ -143,6 +143,10 @@ input[type="submit"]{
 
     html{
         font-size: 50%;
+        overflow-x: hidden;
+    }
+    body {
+        overflor-x: hidden;
     }
 
     .grid{

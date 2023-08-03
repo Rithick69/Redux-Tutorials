@@ -40,6 +40,7 @@ const Services = () => {
 			border: 0.1rem solid rgb(170 170 170 / 40%);
 			.card-data {
 				padding: 0 2rem;
+				margin: 2rem 0;
 			}
 
 			h3 {
@@ -107,6 +108,15 @@ const Services = () => {
 			.grid-two-column,
 			.grid-three-column {
 				grid-template-columns: 1fr;
+			}
+			.card-data {
+				margin: 2rem 0;
+			}
+			a {
+				display: flex;
+				justify-content: center;
+				align-item: center;
+				margin: 2rem 0;
 			}
 		}
 	`;

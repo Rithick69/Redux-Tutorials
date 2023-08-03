@@ -62,6 +62,26 @@ const Footer = () => {
 				height: 0.1px;
 			}
 		}
+
+		@media (max-width: ${({ theme }) => theme.media.mobile}) {
+			.contact-short {
+				max-width: 95vw;
+				padding: 2rem 0rem;
+				display: flex;
+
+				justify-content: center;
+				align-items: center;
+
+				.grid div:last-child {
+					justify-self: flex-start;
+					align-self: center;
+				}
+			}
+
+			.footer-bottom--section {
+				padding-top: 3rem;
+			}
+		}
 	`;
 	return (
 		<Wrapper>
@@ -71,7 +91,7 @@ const Footer = () => {
 						<h3>Ready to get started ?</h3>
 						<h3>Talk to us today</h3>
 					</div>
-					<div>
+					<div className="contact-short-btn">
 						<NavLink to="/">
 							<Button>Get Started</Button>
 						</NavLink>
