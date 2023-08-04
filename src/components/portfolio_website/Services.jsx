@@ -41,6 +41,10 @@ const Services = () => {
 			.card-data {
 				padding: 0 2rem;
 				margin: 2rem 0;
+
+				button {
+					margin-top: 2rem;
+				}
 			}
 
 			h3 {
@@ -116,7 +120,6 @@ const Services = () => {
 				display: flex;
 				justify-content: center;
 				align-item: center;
-				margin: 2rem 0;
 			}
 		}
 	`;

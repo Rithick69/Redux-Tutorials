@@ -59,10 +59,13 @@ const Navbar = () => {
 
 			.navbar-list {
 				width: 100vw;
-				height: 100vh;
-				position: absolute;
+				height: 100%;
+				position: fixed;
+				z-index: 1;
 				top: 0;
 				left: 0;
+				overflow-x: hidden;
+				transition: 0.5s;
 				background-color: #fff;
 
 				display: flex;
