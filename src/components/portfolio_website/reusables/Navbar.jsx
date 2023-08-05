@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { styled } from 'styled-components';
 import { CgMenu, CgClose } from 'react-icons/cg';
 
 const Navbar = () => {
 	const [openMenu, setOpenMenu] = useState(false);
+
+	useEffect(() => {
+		function updateSize() {
+			openMenu && window.innerWidth <= '998'
+				? (document.getElementsByTagName('html')[0].style.overflow = 'hidden')
+				: (document.getElementsByTagName('html')[0].style.overflow = 'auto');
+		}
+		window.addEventListener('resize', updateSize);
+		updateSize();
+		return () => window.removeEventListener('resize', updateSize);
+	}, [openMenu]);
+
 	const Nav = styled.nav`
 		.navbar-list {
 			display: flex;
@@ -59,16 +71,19 @@ const Navbar = () => {
 
 			.navbar-list {
 				width: 100vw;
-				height: 100%;
+				height: 100vh;
 				position: fixed;
-				z-index: 1;
+				z-index: 999;
 				top: 0;
 				left: 0;
+				right: 0;
+				bottom: 0;
 				overflow-x: hidden;
 				transition: 0.5s;
 				background-color: #fff;
 
 				display: flex;
+				flex-grow: 1;
 				justify-content: center;
 				align-content: center;
 				flex-direction: column;
