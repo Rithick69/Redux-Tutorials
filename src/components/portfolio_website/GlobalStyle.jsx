@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
 
 html {
     font-size: 62.5%;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
 }
 
 body {
@@ -146,7 +146,7 @@ input[type="submit"]{
         overflow-x: hidden;
     }
     body {
-        overflor-x: hidden;
+        overflow-x: hidden;
     }
 
     .grid{
