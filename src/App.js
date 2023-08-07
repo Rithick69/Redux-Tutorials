@@ -1,10 +1,10 @@
-import React from "react";
-import AppP from "./components/portfolio_website/AppP";
+import React from 'react';
+import AppU from './components/admin_user_table/AppU';
 
 const App = () => {
 	return (
 		<>
-			<AppP />
+			<AppU />
 		</>
 	);
 };
