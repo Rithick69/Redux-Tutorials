@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getServices } from '../../actions';
+import { getServices } from '../../actions_redux';
 import { styled } from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { Button } from './styles/Button';
