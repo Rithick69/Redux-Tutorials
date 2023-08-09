@@ -1,12 +1,15 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter as Router } from "react-router-dom";
-import store, { persistor } from "./store";
-import { Provider } from "react-redux";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router } from 'react-router-dom';
+// import store, { persistor } from './store';
 
-import { PersistGate } from "redux-persist/integration/react";
+// Redux ToolKit store
+import store from './store_TK';
+import { Provider } from 'react-redux';
+
+// import { PersistGate } from 'redux-persist/integration/react';
 
 // import { AppProvider } from "./components/movie_website/context";
 
@@ -14,9 +17,8 @@ import { PersistGate } from "redux-persist/integration/react";
 // 	console.log(store.getState());
 // });
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
 	// Context API config
 
 	// <React.StrictMode>
@@ -30,13 +32,24 @@ root.render(
 
 	// Redux Store Config
 
+	// <React.StrictMode>
+	// 	{/* Providing store data to App component using Provider */}
+	// 	<Router>
+	// 		<Provider store={store}>
+	// 			<PersistGate loading={null} persistor={ persistor }>
+	// 				<App />
+	// 			</PersistGate>
+	// 		</Provider>
+	// 	</Router>
+	// </React.StrictMode>
+
+	// Redux ToolKit config
+
 	<React.StrictMode>
 		{/* Providing store data to App component using Provider */}
 		<Router>
 			<Provider store={store}>
-				<PersistGate loading={null} persistor={ persistor }>
-					<App />
-				</PersistGate>
+				<App />
 			</Provider>
 		</Router>
 	</React.StrictMode>
