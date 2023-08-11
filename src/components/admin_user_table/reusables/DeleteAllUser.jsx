@@ -1,7 +1,29 @@
 import React from 'react';
+import { clearAll } from '../../../store_TK/slices/UserSlice';
+import { useDispatch } from 'react-redux';
+import { styled } from 'styled-components';
 
 const DeleteAllUser = () => {
-	return <div>DeleteAllUser</div>;
+	const dispatch = useDispatch();
+
+	const deleteAll = () => {
+		dispatch(clearAll());
+	};
+	return (
+		<Wrapper>
+			<button className="btn clear-btn" onClick={deleteAll}>
+				clear users
+			</button>
+		</Wrapper>
+	);
 };
+
+const Wrapper = styled.section`
+	.clear-btn {
+		text-transform: capitalize;
+		background-color: #db338a;
+		margin-top: 2rem;
+	}
+`;
 
 export default DeleteAllUser;
