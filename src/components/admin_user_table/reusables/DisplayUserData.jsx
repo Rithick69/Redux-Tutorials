@@ -1,6 +1,8 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { styled } from 'styled-components';
+import { MdDeleteForever } from 'react-icons/md';
+import { removeUser } from '../../../store_TK/slices/UserSlice';
 
 const DisplayUserData = () => {
 	// Here the param store represents the complete store data.
@@ -9,12 +11,22 @@ const DisplayUserData = () => {
 		return store.users;
 	});
 
-	console.log(data);
+	const dispatch = useDispatch();
 
+	const deleteUser = (id) => {
+		dispatch(removeUser(id));
+	};
 	return (
 		<Wrapper>
 			{data.map((user, id) => {
-				return <li key={id}>{user}</li>;
+				return (
+					<li key={id}>
+						{user}
+						<button className="btn-delete" onClick={() => deleteUser(id)}>
+							<MdDeleteForever className="delete-icon" />
+						</button>
+					</li>
+				);
 			})}
 		</Wrapper>
 	);
