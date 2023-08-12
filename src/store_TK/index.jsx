@@ -4,8 +4,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import userSlice from './slices/UserSlice';
 
-// Will be integrating Redux Persist with this store in future, WIP.
-
 import { persistStore, persistReducer } from 'redux-persist';
 
 import storage from 'redux-persist/lib/storage';
