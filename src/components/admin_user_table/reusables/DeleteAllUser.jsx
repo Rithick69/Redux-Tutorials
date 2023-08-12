@@ -1,7 +1,8 @@
 import React from 'react';
-import { clearAll } from '../../../store_TK/slices/UserSlice';
+// import { clearAll } from '../../../store_TK/slices/UserSlice';
 import { useDispatch } from 'react-redux';
 import { styled } from 'styled-components';
+import { clearAll } from '../../../store_TK/actions';
 
 const DeleteAllUser = () => {
 	const dispatch = useDispatch();
