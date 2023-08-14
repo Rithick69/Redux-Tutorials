@@ -1,18 +1,28 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { clearAll } from '../actions';
+
+export const fetchTodos = createAsyncThunk('fetchTodos', async () => {
+	const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+	const data = await res.json();
+	return data;
+});
 
 const userSlice = createSlice({
 	name: 'user',
-	initialState: [],
+	initialState: {
+		isLoading: false,
+		data: [],
+		isError: false,
+	},
 	reducers: {
 		// Redux Toolkit provides us with Immer.
 		// Immer is a package that allows us to work with immutable state in
 		// more convenient way.
 		addUser(state, action) {
-			state.push(action.payload);
+			state.data.push(action.payload);
 		},
 		removeUser(state, action) {
-			state.splice(action.payload, 1);
+			state.data.splice(action.payload, 1);
 		},
 		// clearAll() {
 		// 	// We don't want to assign [] to state we want to empty the initial
@@ -38,7 +48,19 @@ const userSlice = createSlice({
 	extraReducers(builder) {
 		// First param is action type and 2nd param is the reducer.
 		builder.addCase(clearAll, () => {
-			return [];
+			return {};
+		});
+		builder.addCase(fetchTodos.pending, (state, action) => {
+			state.isLoading = true;
+		});
+		builder.addCase(fetchTodos.fulfilled, (state, action) => {
+			state.isLoading = false;
+			state.data = action.payload;
+		});
+		builder.addCase(fetchTodos.rejected, (state, action) => {
+			state.isLoading = false;
+			state.isError = true;
+			console.log('Error', action.payload);
 		});
 	},
 });
