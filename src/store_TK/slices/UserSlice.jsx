@@ -1,7 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { clearAll } from '../actions';
+import { mockData } from '../../api';
 
-export const fetchTodos = createAsyncThunk('fetchTodos', async () => {
+const mock = true;
+
+export const fetchUsers = createAsyncThunk('fetchUsers', async () => {
 	const res = await fetch('https://jsonplaceholder.typicode.com/todos');
 	const data = await res.json();
 	return data;
@@ -18,9 +21,9 @@ const userSlice = createSlice({
 		// Redux Toolkit provides us with Immer.
 		// Immer is a package that allows us to work with immutable state in
 		// more convenient way.
-		addUser(state, action) {
-			state.data.push(action.payload);
-		},
+		// addUser(state, action) {
+		// 	state.data.push(action.payload);
+		// },
 		removeUser(state, action) {
 			state.data.splice(action.payload, 1);
 		},
@@ -47,17 +50,19 @@ const userSlice = createSlice({
 
 	extraReducers(builder) {
 		// First param is action type and 2nd param is the reducer.
-		builder.addCase(clearAll, () => {
-			return {};
+		builder.addCase(clearAll, (state) => {
+			state.data = [];
 		});
-		builder.addCase(fetchTodos.pending, (state, action) => {
+		builder.addCase(fetchUsers.pending, (state, action) => {
 			state.isLoading = true;
 		});
-		builder.addCase(fetchTodos.fulfilled, (state, action) => {
+		builder.addCase(fetchUsers.fulfilled, (state, action) => {
 			state.isLoading = false;
-			state.data = action.payload;
+			// state.data = action.payload;
+			const data = mock ? mockData() : action.payload;
+			state.data.push(data);
 		});
-		builder.addCase(fetchTodos.rejected, (state, action) => {
+		builder.addCase(fetchUsers.rejected, (state, action) => {
 			state.isLoading = false;
 			state.isError = true;
 			console.log('Error', action.payload);

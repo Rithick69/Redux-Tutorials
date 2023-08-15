@@ -1,19 +1,18 @@
 import React from 'react';
 import DeleteAllUser from './reusables/DeleteAllUser';
 import { styled } from 'styled-components';
-import { mockData } from '../../api';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../../store_TK/slices/UserSlice';
 import DisplayUserData from './reusables/DisplayUserData';
+import { fetchUsers } from '../../store_TK/slices/UserSlice';
 
 const UserDetails = () => {
 	const dispatch = useDispatch();
 
 	// Fetching mockdata as payload through chance npm package.
-	const addNewUser = (payload) => {
-		// Calling action creator with the help of dispatch.
-		dispatch(addUser(payload));
-	};
+	// const addNewUser = (payload) => {
+	// 	// Calling action creator with the help of dispatch.
+	// 	dispatch(addUser(payload));
+	// };
 
 	return (
 		<>
@@ -23,7 +22,8 @@ const UserDetails = () => {
 						<div className="admin-subtitle">List of User Details</div>
 						<button
 							className="btn add-btn"
-							onClick={() => addNewUser(mockData())}
+							// onClick={() => addNewUser(mockData())}
+							onClick={() => dispatch(fetchUsers())}
 						>
 							Add New Users
 						</button>
