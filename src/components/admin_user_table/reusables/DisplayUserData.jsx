@@ -7,7 +7,8 @@ import { removeUser } from '../../../store_TK/slices/UserSlice';
 const DisplayUserData = () => {
 	// Here the param store represents the complete store data.
 	// We can select the reducer we want to access the state of from here.
-	const data = useSelector((store) => {
+	const { data, isLoading } = useSelector((store) => {
+		console.log(store.users.data);
 		return store.users;
 	});
 
@@ -16,20 +17,23 @@ const DisplayUserData = () => {
 	const deleteUser = (id) => {
 		dispatch(removeUser(id));
 	};
-	return (
-		<Wrapper>
-			{data.map((user, id) => {
-				return (
-					<li key={id}>
-						{user}
-						<button className="btn-delete" onClick={() => deleteUser(id)}>
-							<MdDeleteForever className="delete-icon" />
-						</button>
-					</li>
-				);
-			})}
-		</Wrapper>
-	);
+	if (!isLoading) {
+		return (
+			<Wrapper>
+				{data &&
+					data.map((user, id) => {
+						return (
+							<li key={id}>
+								{user}
+								<button className="btn-delete" onClick={() => deleteUser(id)}>
+									<MdDeleteForever className="delete-icon" />
+								</button>
+							</li>
+						);
+					})}
+			</Wrapper>
+		);
+	}
 };
 
 const Wrapper = styled.section`
